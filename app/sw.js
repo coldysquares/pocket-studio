@@ -1,9 +1,14 @@
 // App shell: network first with a 3 second timeout, cache as fallback, so new deploys reach the phone
 // and the app still opens offline or on weak signal.
 // Offline pack (/vendor and /models): cache first. The page downloads it once into PACK, then it never needs the network.
-const CACHE = 'pocketstudio-shell-v5';
+const CACHE = 'pocketstudio-shell-v6';
 const PACK = 'pocket-offline-pack-v1';
-const SHELL = ['./', './index.html', './manifest.webmanifest'];
+const SHELL = ['./', './index.html', './manifest.webmanifest', './license.js',
+  './icons/icon-192.png', './icons/icon-512.png', './icons/maskable-512.png', './icons/apple-touch-icon.png',
+  './songbook/', './songbook/index.html', './songbook/styles.css', './songbook/web-polish.css', './songbook/pocket.css', './songbook/fonts.css',
+  './songbook/main.js', './songbook/watch.js', './songbook/web-polish.js', './songbook/pocket.js',
+  './songbook/fonts/anton-latin-400-normal.woff2', './songbook/fonts/silkscreen-latin-400-normal.woff2', './songbook/fonts/silkscreen-latin-700-normal.woff2',
+  './songbook/fonts/ibm-plex-mono-latin-400-normal.woff2', './songbook/fonts/ibm-plex-mono-latin-400-italic.woff2', './songbook/fonts/ibm-plex-mono-latin-600-normal.woff2', './songbook/fonts/ibm-plex-mono-latin-700-normal.woff2'];
 const isPack = url => /\/(vendor|models)\//.test(url.pathname);
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => Promise.all(SHELL.map(u => c.add(u).catch(() => {})))));
