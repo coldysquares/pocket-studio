@@ -1,7 +1,7 @@
 // App shell: network first with a 3 second timeout, cache as fallback, so new deploys reach the phone
 // and the app still opens offline or on weak signal.
 // Offline pack (/vendor and /models): cache first. The page downloads it once into PACK, then it never needs the network.
-const CACHE = 'pocketstudio-shell-v6';
+const CACHE = 'pocketstudio-shell-v7';
 const PACK = 'pocket-offline-pack-v1';
 const SHELL = ['./', './index.html', './manifest.webmanifest', './license.js',
   './icons/icon-192.png', './icons/icon-512.png', './icons/maskable-512.png', './icons/apple-touch-icon.png',
